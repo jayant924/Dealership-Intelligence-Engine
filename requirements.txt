@@ -1,0 +1,18 @@
+# JumpIQ — Phase 1 exploration (pattern detection, time series, anomaly detection)
+# Python 3.8+ recommended
+
+# Core data
+pandas>=1.5.0
+numpy>=1.21.0
+
+# Time series & stats
+statsmodels>=0.14.0
+
+# Anomaly detection (e.g. Isolation Forest)
+scikit-learn>=1.0.0
+
+# Prophet (optional — install separately if needed: pip install prophet)
+# prophet>=1.1.0
+
+# Jupyter for notebooks (optional)
+# jupyter>=1.0.0
