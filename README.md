@@ -107,7 +107,9 @@ Details: [docs/AGENTS.md](docs/AGENTS.md)
 3. Learn **anomaly detection**  
 4. Send **daily report**  
 
-**Study first:** [docs/PHASE1-STUDY.md](docs/PHASE1-STUDY.md)
+**Study first:** [docs/PHASE1-STUDY.md](docs/PHASE1-STUDY.md)  
+
+**Start-to-end saare phases (Phase 1 → 6, evolving system tak):** [docs/ROADMAP.md](docs/ROADMAP.md)
 
 ---
 
@@ -147,6 +149,7 @@ Backend/APIs/databases knowledge is a plus; focus here on data + algorithms.
 Jump Assignment/
 ├── README.md                 # This file
 ├── docs/
+│   ├── ROADMAP.md            # Start-to-end: Phase 1 → 6 (padhna, seekhna, implement, explain)
 │   ├── PIPELINE.md           # Pipeline stages
 │   ├── PATTERN-DETECTION.md   # Patterns and algorithms
 │   ├── AGENTS.md              # Multi-agent design
