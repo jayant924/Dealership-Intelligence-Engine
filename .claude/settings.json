@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd.exe /c \"C:\\\\Users\\\\JayantSingh\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python314\\\\Scripts\\\\pip.exe install numpy pandas -q\")",
+      "Bash(cmd.exe /c \"C:\\\\Users\\\\JayantSingh\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python314\\\\python.exe exploration/trend_detection_numpy_pandas.py\")",
+      "Bash(cmd.exe /c \"C:\\\\Users\\\\JayantSingh\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python314\\\\python.exe exploration/trend_detection_numpy_pandas.py 2>&1\")",
+      "Bash(cmd.exe /c \"C:\\\\Users\\\\JayantSingh\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python314\\\\python.exe -c \"\"import numpy; print\\(numpy.__version__\\)\"\" 2>&1\")",
+      "Bash(cmd.exe /c \"C:\\\\Users\\\\JayantSingh\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python314\\\\python.exe -c \"\"import numpy; print\\(numpy.__version__\\)\"\"\")",
+      "Bash(cmd.exe /c \"C:\\\\Users\\\\JayantSingh\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python314\\\\python.exe exploration/trend_detection_numpy_pandas.py > output.txt 2>&1\")",
+      "Bash(powershell -Command \"& ''C:\\\\Users\\\\JayantSingh\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python314\\\\python.exe'' ''C:\\\\ShortHills AI\\\\Dealership-Intelligence-Engine\\\\exploration\\\\trend_detection_numpy_pandas.py''\")",
+      "Read(//c/Users/JayantSingh/AppData/Local/Programs/Python//**)",
+      "Bash(\"/c/Users/JayantSingh/AppData/Local/Programs/Python/Python314/python.exe\" \"c:/ShortHills AI/Dealership-Intelligence-Engine/exploration/trend_detection_numpy_pandas.py\")",
+      "Read(//usr/**)",
+      "Read(//mnt/c/Users/JayantSingh/AppData/Local/Programs/Python/**)",
+      "Bash(py -c \"import numpy; print\\(''numpy ok''\\)\")",
+      "Bash(py -m pip install numpy pandas)",
+      "Bash(py -m ensurepip --upgrade)"
+    ]
+  }
+}
