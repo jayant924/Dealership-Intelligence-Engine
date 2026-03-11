@@ -16,14 +16,14 @@ Context: Fake dealership monthly revenue data ($k).
 months = list(range(1, 13))  # months 1 to 12
 
 # "Champion" dealership — generally going up
-champion_revenue = [210, 215, 220, 218, 230, 235, 240, 238, 250, 255, 260, 265]
+champion_revenue: list[float] = [210, 215, 220, 218, 230, 235, 240, 238, 250, 255, 260, 265]
 
 # "Straggler" dealership — generally going down
-straggler_revenue = [280, 275, 268, 260, 255, 250, 248, 240, 235, 228, 220, 215]
+straggler_revenue: list[float] = [280, 275, 268, 260, 255, 250, 248, 240, 235, 228, 220, 215]
 
 
 # ─── 1. SLOPE (Linear Regression) ──────────────────────────────────────────────
-def compute_slope(values):
+def compute_slope(values: list[float]):
     """
     Linear regression using the least-squares formula.
     x = time index (0, 1, 2, ...)
@@ -67,14 +67,15 @@ Key insight:
 
 
 # ─── 2. MOVING AVERAGE ──────────────────────────────────────────────────────────
-def moving_average(values, window=3):
+def moving_average(values: list[float], window: int = 3) -> list[float | None]:
     """
     For each position i >= window-1, average the last `window` values.
     Positions before that are None (not enough data yet).
     """
-    result = [None] * (window - 1)
+    result: list[float | None] = []
+    result.extend([None] * (window - 1))
     for i in range(window - 1, len(values)):
-        chunk = values[i - window + 1 : i + 1]
+        chunk = values[i - window + 1 : i + 1]  # type: ignore
         result.append(sum(chunk) / window)
     return result
 
@@ -102,9 +103,9 @@ Key insight:
 
 
 # ─── 3. PERIOD COMPARISON ───────────────────────────────────────────────────────
-def period_avg(values, start, end):
+def period_avg(values: list[float], start: int, end: int):
     """Average revenue over months [start..end] (1-indexed)."""
-    return sum(values[start - 1 : end]) / (end - start + 1)
+    return sum(values[start - 1 : end]) / (end - start + 1)  # type: ignore
 
 
 print("=" * 55)
@@ -137,7 +138,7 @@ print("=" * 55)
 print("COMBINED SIGNAL — Quadrant Classification")
 print("=" * 55)
 
-def classify(name, data):
+def classify(name: str, data: list[float]):
     slope, _   = compute_slope(data)
     prev_avg   = period_avg(data, 7, 9)
     last_avg   = period_avg(data, 10, 12)

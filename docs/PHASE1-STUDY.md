@@ -4,7 +4,8 @@
 
 **Before you start:** Read [EXPLORATION-PRINCIPLES.md](EXPLORATION-PRINCIPLES.md). Do not jump to coding; understand pattern → algorithm → result → explanation. Relate every concept to JumpIQ dealership data.
 
-Deliverable: **Daily report** (what you studied + how it applies to dealership revenue).
+Deliverable (Daily): **Daily progress report** (what you studied + how it applies to dealership data).
+Deliverable (Friday Demo): **Concept explanation (Trend, Z-Score, Seasonality), implementation approach (Agents), and a working Python PoC script.**
 
 ---
 

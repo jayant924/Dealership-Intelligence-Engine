@@ -23,6 +23,20 @@ Yeh document **pure journey** ko define karta hai: Phase 1 se leke **evolving in
 
 ---
 
+## 🚨 Urgent Sprint: Friday Demo PoC (Current Focus)
+
+**Goal:** Compress key learnings from Phase 1, Phase 3, and Phase 5 to deliver a working Proof of Concept (PoC) demo by Friday.
+
+*   **What we need for Friday:**
+    1.  **Concept Explanation:** Be able to clearly explain the target algorithms (Trend, Z-Score/Outlier, Seasonality).
+    2.  **Implementation Approach:** Explain how a Multi-Agent architecture (Super Agent + Pattern Agents) applies to these algorithms in JumpIQ.
+    3.  **Working Demo:** A python script running mock time-series sales data against the algorithms and generating an "Anomaly Report."
+    4.  **Next Steps:** Presentation on how this PoC evolves into the production Intelligence Engine.
+
+*After the Friday Demo, we will return to the structured Phase 2 (Data Pipeline) and stabilize the system end-to-end.*
+
+---
+
 ## Phase 1 — Algorithms Deep Understanding *(current)*
 
 **Kya karna hai:** Code pe jump mat karo; pehle **pattern → algorithm → result → explanation** samjho.
