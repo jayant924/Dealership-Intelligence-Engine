@@ -68,22 +68,37 @@ Details: [docs/PATTERN-DETECTION.md](docs/PATTERN-DETECTION.md)
 
 ## 5. Multi-Agent Architecture (Proposed)
 
-```
-Super Agent
-     ↓
-Pattern Agents (each checks one pattern)
+We are developing a **Multi-Agent Architecture** where specialized AI agents collaborate to investigate issues automatically.
+
+```mermaid
+graph TD
+    A[Raw Sales Data] --> B[Data Pipeline Cleanup]
+    B --> C[Super Agent]
+    
+    C -->|Requests Check| D(Trend Agent)
+    C -->|Requests Check| E(Seasonality Agent)
+    C -->|Requests Check| F(Outlier Agent)
+    C -->|Requests Check| G(Market Context Agent)
+    
+    D -->|Returns Slope| C
+    E -->|Returns Expected| C
+    F -->|Returns Z-Score| C
+    G -->|Returns Events| C
+    
+    C --> H{Is Anomaly?}
+    H -->|Yes| I["Generate Explanation (e.g., 'Revenue dropped because...\\nTrend is negative + No Festival expected')"]
+    H -->|No| J[Normal Operation / No Action]
 ```
 
 | Agent             | Job                      |
 |-------------------|--------------------------|
-| Trend Agent       | Detects growth / decline |
-| Outlier Agent     | Detects abnormal spikes  |
-| Seasonality Agent | Detects recurring cycles |
-| Market Agent      | Checks competitor trends  |
+| Super Agent       | Orchestrator. Triggers tests and compiles the final human-readable explanation. |
+| Trend Agent       | Analyzes steady growth / decline (Champions vs Stragglers) |
+| Outlier Agent     | Detects abnormal, unexpected spikes using Z-Scores & bounds |
+| Seasonality Agent | Detects recurring, expected cycles (e.g., Holidays) |
+| Market Agent      | Checks external competitor trends and economic events |
 
-**Flow:** Super Agent receives data → each Pattern Agent returns result → Classifier decides → if anomaly → investigate.
-
-**Why not neural networks:** “Neural networks become black box.” The system must **explain** (e.g. “Revenue dropped because: inventory low, competitor price drop, market slowdown”). Prefer **interpretable models**: regression, statistical rules, time series models.
+**Why not neural networks:** The system must **explain** its reasoning (e.g., “Revenue dropped because: inventory low, competitor price drop, no seasonal boost expected”). Black box neural networks fail at explainability. Therefore, we prefer **interpretable models**: regression, statistical rules, and explicit time series forecasting.
 
 Details: [docs/AGENTS.md](docs/AGENTS.md)
 

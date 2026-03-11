@@ -1,21 +1,21 @@
-# JumpIQ — Start to End Roadmap (Saare Phases)
+# JumpIQ — Start to End Roadmap (All Phases)
 
-Yeh document **pure journey** ko define karta hai: Phase 1 se leke **evolving intelligence engine** tak. Har phase mein kya **padhna**, **seekhna**, **implement** karna hai, aur kya **explain** karna hai — sab yahin hai.
+This document defines the complete journey: from Phase 1 straight through to the evolving intelligence engine. It dictates exactly what to study, learn, implement, and explain at every phase.
 
-**Goal (end state):** Evolving intelligence engine jo:
-- Anomalies detect kare  
-- Causes explain kare  
-- Naye patterns seekh sake  
-- Naye rules bana sake  
+**Goal (end state):** Evolving intelligence engine that:
+- Detects anomalies
+- Explains causes 
+- Learns new patterns  
+- Generates new rules  
 
 ---
 
-## Overview — Saare Phases Ek Nazar Mein
+## Overview — All Phases at a Glance
 
 | Phase | Focus | Output |
 |-------|--------|--------|
-| **1** | Algorithms samajhna (pattern → algorithm → result → explain) | Deep understanding, daily reports |
-| **2** | Data pipeline: Raw + Cleaning + Validation | Clean, validated data ready for models |
+| **1** | Understanding algorithms (pattern → algorithm → result → explain) | Deep understanding, daily reports |
+| **2** | Data pipeline: Raw Data + Cleaning + Validation | Clean, validated data ready for models |
 | **3** | Models + Derived values (scores) | Trend/seasonality/outlier + Valuation/Momentum scores |
 | **4** | Rules + Database + UI feed | Rule engine, stored results, UI ke liye data |
 | **5** | Multi-agent layer (Pattern Agents + Super Agent) | Anomaly detect + investigate + explain |
@@ -30,7 +30,7 @@ Yeh document **pure journey** ko define karta hai: Phase 1 se leke **evolving in
 *   **What we need for Friday:**
     1.  **Concept Explanation:** Be able to clearly explain the target algorithms (Trend, Z-Score/Outlier, Seasonality).
     2.  **Implementation Approach:** Explain how a Multi-Agent architecture (Super Agent + Pattern Agents) applies to these algorithms in JumpIQ.
-    3.  **Working Demo:** A python script running mock time-series sales data against the algorithms and generating an "Anomaly Report."
+    3.  **Working Demo:** A script running mock time-series sales data against the algorithms and generating an "Anomaly Report."
     4.  **Next Steps:** Presentation on how this PoC evolves into the production Intelligence Engine.
 
 *After the Friday Demo, we will return to the structured Phase 2 (Data Pipeline) and stabilize the system end-to-end.*
@@ -39,28 +39,28 @@ Yeh document **pure journey** ko define karta hai: Phase 1 se leke **evolving in
 
 ## Phase 1 — Algorithms Deep Understanding *(current)*
 
-**Kya karna hai:** Code pe jump mat karo; pehle **pattern → algorithm → result → explanation** samjho.
+**Objective:** Do not jump straight to code. First, understand the flow: pattern -> algorithm -> result -> explanation.
 
-### Padhna (R&D)
-- Trend: slope, moving average, linear regression (time series)
-- Seasonality: seasonal decomposition, Prophet, ARIMA
-- Outliers: Z-score, IQR, Isolation Forest (aur kab fail hota hai)
-- Time series basics: trend, seasonality, cycle, noise
+### Research & Study (R&D)
+*See deep-dive documentation in the `/docs/learning/` folder.*
+- **Trend:** [Docs: Trend Documentation](learning/TREND_AND_SEASONALITY.md) (slope, moving average)
+- **Seasonality:** [Docs: Seasonality](learning/TREND_AND_SEASONALITY.md) (decomposition, Prophet)
+- **Outliers:** [Docs: Anomaly Detection](learning/ANOMALY_DETECTION.md) (Z-score, IQR)
 
-### Seekhna
-- Algorithm **andar se** kaise kaam karta hai (formula, logic)
-- Kab fail hota hai (e.g. small data, non-stationary)
-- Har concept: **“Yeh dealership revenue/valuation pe kaise apply hota hai?”**
+### Understanding & Learning
+- How the algorithm works internally (formulas, mathematical logic).
+- When it fails (e.g., small datasets, non-stationary data).
+- For every concept: “How does this apply to dealership revenue and valuation?”.
 
-### Implement
-- Small notebooks/scripts: slope, moving avg, Z-score, IQR, decomposition (exploration folder)
-- **Pehle understand, phir code** — checklist follow karo (EXPLORATION-PRINCIPLES.md)
+### Implementation
+- Small notebooks/scripts: slope, moving avg, Z-score, IQR, decomposition.
+- Understand first, then code. Follow the principles in EXPLORATION-PRINCIPLES.md.
 
-### Explain
-- Daily report: aaj kya padha + **dealership revenue pe kaise apply**
-- Senior ko bata sako: “Trend is slope; we need it for Champions vs Stragglers because…”
+### Explanation
+- Daily report: what was studied today + how it applies to dealership revenue.
+- Be able to explain clearly: “Trend is slope; we need it for Champions vs Stragglers because…”
 
-**Done when:** Har pattern (trend, seasonality, outlier) ke liye tum explain kar sako — kaise kaam karta hai, kab use karna hai, JumpIQ mein kahan use hoga.
+**Done when:** You can explain every pattern (trend, seasonality, outlier) — how it works, when to use it, and where it fits in JumpIQ.
 
 **Doc:** [PHASE1-STUDY.md](PHASE1-STUDY.md), [EXPLORATION-PRINCIPLES.md](EXPLORATION-PRINCIPLES.md)
 
@@ -68,30 +68,30 @@ Yeh document **pure journey** ko define karta hai: Phase 1 se leke **evolving in
 
 ## Phase 2 — Data Pipeline: Raw Data + Cleaning + Validation
 
-**Kya karna hai:** Pipeline ka **pehla hissa** — raw data aane do, clean karo, validate karo. Model pe **sirf clean data** chadega.
+**Objective:** The first section of the pipeline — ingest raw data, clean it, and validate it. Models run strictly on clean data.
 
-### Padhna (R&D)
+### Research & Study (R&D)
 - Data quality: missing values, duplicates, wrong types, outliers (data bug vs real)
 - Imputation: mean, median, last-known, forward-fill, time-based average
-- Validation: range checks, consistency (e.g. revenue ≥ 0), schema validation
+- Validation: range checks, consistency (e.g. revenue >= 0), schema validation
 - ETL basics: extract (DMS, APIs), transform (clean), load (staging/DB)
 
-### Seekhna
-- Kab impute karna hai, kab row skip/flag karna hai
-- “Never trust raw data blindly” — validation rules kaise design karein
-- Time-series specific: missing month kaise handle karein (e.g. avg last 3 months)
+### Understanding & Learning
+- When to impute versus when to skip or flag a row.
+- “Never trust raw data blindly” — learn how to design robust validation rules.
+- Handling time-series specifics like missing months (e.g., averaging the last 3 months).
 
-### Implement
+### Implementation
 - Raw data ingest (sample/CSV ya mock API se start)
 - Cleaning module: missing, duplicates, basic outliers (e.g. IQR for “sanity”)
 - Validation layer: pass/fail + reason (e.g. “Jan revenue null → imputed with avg(Dec, Nov, Oct)”)
 - Log/audit: kya change hua, kyu — explainability ke liye
 
-### Explain
-- “Ye record clean kyu hai / kyu reject hai” — human-readable reason
-- Pipeline diagram pe bata sako: Raw → Cleaning → Validate → output clean dataset
+### Explanation
+- Explain “Why is this record clean/rejected?” with a human-readable reason.
+- Be able to trace the pipeline flow: Raw -> Cleaning -> Validate -> Cleaned Output.
 
-**Done when:** Reliable clean + validated dataset mil raha hai; tum bata sakte ho kis row pe kya cleaning/validation lagi.
+**Done when:** The dataset is reliably clean and validated, and you can explain exactly which logic processed each row.
 
 **Doc:** [PIPELINE.md](PIPELINE.md) — Step 1 & 2
 
@@ -99,27 +99,27 @@ Yeh document **pure journey** ko define karta hai: Phase 1 se leke **evolving in
 
 ## Phase 3 — Models + Derived Values (Scores)
 
-**Kya karna hai:** Clean data pe **models** chalao (trend, seasonality, outlier); phir **derived values** (scores) nikalo.
+**Objective:** Run the models on clean data (trend, seasonality, outliers); then extract derived values (scores).
 
-### Padhna (R&D)
-- Phase 1 ke algorithms ko **production-style** use (configurable, interpretable output)
-- Derived metrics: Valuation Score, Profitability Score, Momentum Score, Market Health Score — yeh kaise define hain (business se align)
+### Research & Study (R&D)
+- Implement Phase 1 algorithms in a production style (configurable, interpretable outputs).
+- Derived metrics: Valuation Score, Profitability Score, Momentum Score, Market Health Score — how these are defined and aligned with the business.
 - Combining model outputs into one score (e.g. weighted formula, rules)
 
-### Seekhna
-- Model output ko **explain** kaise karein (e.g. “Momentum score 0.8 because trend slope positive and no outlier”)
-- Kab trend/seasonality/outlier result conflict kare (e.g. spike = seasonal vs outlier) — resolution logic
+### Understanding & Learning
+- How to explain the model output. (e.g. “Momentum score 0.8 because trend slope positive and no outlier”)
+- How to resolve conflicts between trend, seasonality, and outlier results.
 
-### Implement
+### Implementation
 - Model layer: trend detection, seasonality detection, outlier detection (Phase 1 algorithms use karke)
-- Derived-values layer: inputs = raw + model outputs → Valuation/Momentum/Profitability/Market Health scores
-- Har score ke liye **explanation** (short text ya structured reason) — e.g. “Momentum = 0.8: upward trend, no anomaly”
+- Derived-values layer: inputs = raw + model outputs -> Valuation/Momentum/Profitability/Market Health scores
+- Provide a short text or structured reason for every score. — e.g. “Momentum = 0.8: upward trend, no anomaly”
 
-### Explain
-- “Is dealership ka Momentum score 0.8 kyu hai?” — components (trend, outlier, etc.) se answer
-- “Ye spike outlier hai ya seasonal?” — algorithm + rule se explain
+### Explanation
+- Answer “Why is this dealership’s momentum score 0.8?” by breaking down the components.
+- Answer “Is this spike an outlier or seasonal?” using rules and algorithm results.
 
-**Done when:** Clean data in → models run → scores + explanations out; sab interpretable.
+**Done when:** Clean data yields scores and explanations smoothly and interpretable outputs are generated.
 
 **Doc:** [PIPELINE.md](PIPELINE.md) — Step 3 & 4, [PATTERN-DETECTION.md](PATTERN-DETECTION.md)
 
@@ -127,27 +127,27 @@ Yeh document **pure journey** ko define karta hai: Phase 1 se leke **evolving in
 
 ## Phase 4 — Rules + Database + UI Feed
 
-**Kya karna hai:** **Rule engine** (e.g. revenue growth > 20% + market stable → Opportunity), results **database** mein store karo, **UI** ke liye ready data feed.
+**Objective:** Implement the rule engine, store results in the database, and feed data to the UI.
 
-### Padhna (R&D)
-- Rule engines: condition → action (e.g. if-then, threshold-based)
-- Schema design: cleaned data, model outputs, scores, rule outcomes, timestamps — kaise store karein (query fast, audit easy)
+### Research & Study (R&D)
+- Rule engines: condition -> action (e.g. if-then, threshold-based)
+- Schema design: cleaned data, model outputs, scores, rule outcomes, timestamps — how to store items for fast querying and easy auditing.
 - APIs for UI: what UI needs (time range, dealership, quadrants, anomaly list with reasons)
 
-### Seekhna
-- Rules ko kaise **version** karein (badalne par purana behavior explain ho)
-- Database se “why did this dealership become Opportunity this month?” — trace back
+### Understanding & Learning
+- How to version rules so that legacy behavior remains explainable if changes occur.
+- Trace back via the database to answer why a dealership changed quadrant.
 
-### Implement
-- Rule engine: input = scores + optional model flags → output = classification (Champion/Straggler/Opportunity/etc.) + reason
+### Implementation
+- Rule engine: input = scores + optional model flags -> output = classification (Champion/Straggler/Opportunity/etc.) + reason
 - Database: tables for cleaned data, model results, scores, rule results (with timestamp, dealership_id, etc.)
 - UI feed: API ya view jo UI ko trend, quadrants, anomalies + explanations de
 
-### Explain
-- “Is dealership ko Opportunity kyu mark kiya?” — rule + underlying scores se answer
-- “Is month revenue drop kyu dikha?” — DB se trace: raw → clean → model → score → rule
+### Explanation
+- Explain why a dealership was marked as an opportunity using rules and scores.
+- Using the DB to trace exactly why a revenue drop was flagged.
 
-**Done when:** Rule output consistent hai, DB mein sab traceable hai, UI ko sahi data mil raha hai.
+**Done when:** Rule outputs are consistent, traceable in the database, and the UI receives accurate data feeds.
 
 **Doc:** [PIPELINE.md](PIPELINE.md) — Step 5, 6, 7
 
@@ -155,28 +155,28 @@ Yeh document **pure journey** ko define karta hai: Phase 1 se leke **evolving in
 
 ## Phase 5 — Multi-Agent Layer (Detect + Investigate + Explain)
 
-**Kya karna hai:** **Pattern Agents** (Trend, Outlier, Seasonality, Market) + **Super Agent** — anomaly detect karo, **investigate** karo (data validity → seasonal → competitor → group), **explain** karo.
+**Objective:** **Pattern Agents** (Trend, Outlier, Seasonality, Market) + **Super Agent** — detect anomalies, investigate them (validity -> seasonal -> competitor -> group), and explain them.
 
-### Padhna (R&D)
-- Agent design: single responsibility (har agent ek pattern), orchestration (Super Agent)
+### Research & Study (R&D)
+- Agent design: single responsibility (one agent per pattern), orchestration (Super Agent)
 - Investigation flow: CID-style — step-by-step reason trace (EXPLORATION-PRINCIPLES.md)
-- Tools: Database query, web search, MCP, DMS — kab kaunsa use karna hai
+- Tools: Database query, web search, MCP, DMS — when to use which
 
-### Seekhna
-- Agents ka output **interpretable** kaise rakhein (natural language ya structured reason)
-- Conflict resolution: multiple agents different bolein to Super Agent kaise decide kare
+### Understanding & Learning
+- How to keep agent output highly interpretable using natural language.
+- How the Super Agent resolves conflicting results from pattern agents.
 
-### Implement
-- Trend Agent, Outlier Agent, Seasonality Agent, Market Agent — har ek Phase 3 ke models use kare, result + reason return kare
-- Super Agent: agents ko call kare, results combine kare, classify kare (normal / anomaly / opportunity)
-- Investigation module: anomaly pe trigger → data validity check → seasonal check → competitor/market check → final explanation (e.g. “Revenue dropped because inventory low + competitor price drop”)
+### Implementation
+- Trend Agent, Outlier Agent, Seasonality Agent, Market Agent — each using Phase 3 models to return results and reasons.
+- Super Agent: Call agents, combine results, and classify.
+- Investigation module: Trigger on anomaly -> Check data validity -> Check seasonality -> Market checks -> final explanation.
 - Tools integration: DB search, (optional) web/MCP/DMS for investigation
 
-### Explain
-- “System ne anomaly kyu bola?” — which agent(s) flagged, what reason
-- “Revenue drop ka cause kya nikala?” — investigation steps + final explanation
+### Explanation
+- Answer: “Why did the system flag an anomaly?” (Which agents flagged it, and why).
+- Answer: “What caused the revenue drop?” by detailing investigation steps.
 
-**Done when:** Anomaly aate hi system investigate karke human-readable reason de raha hai.
+**Done when:** As soon as an anomaly hits, the system investigates and returns a human-readable reason.
 
 **Doc:** [AGENTS.md](AGENTS.md), [EXPLORATION-PRINCIPLES.md](EXPLORATION-PRINCIPLES.md) — §7, §8
 
@@ -184,62 +184,60 @@ Yeh document **pure journey** ko define karta hai: Phase 1 se leke **evolving in
 
 ## Phase 6 — Evolving System (Learn New Patterns, New Rules)
 
-**Kya karna hai:** System **evolving** ho — naye patterns add ho sakein, naye rules ban sakein, explanations improve hon, feedback se learn ho.
+**Objective:** The system must evolve — able to add new patterns, generate new rules, improve explanations, and learn precisely from feedback.
 
-### Padhna (R&D)
+### Research & Study (R&D)
 - How other “intelligence” systems evolve (e.g. Stripe fraud — new rules, new signals over time)
-- Feedback loops: user/senior corrects explanation → use that to tune rules or add patterns
+- Feedback loops: The user corrects an explanation -> the system tunes its rules based on that correction.
 - Rule/pattern versioning and A/B or gradual rollout
 
-### Seekhna
-- Naya pattern (e.g. “festival impact”) kaise add karein — new agent ya existing agent extend
-- Naya rule kaise add karein without purana break karein — config-driven rules, audit log
+### Understanding & Learning
+- How to securely add simple new patterns (e.g., “festival impact”).
+- How to safely deploy new rules without breaking legacy logic.
 
-### Implement
-- **Config-driven rules:** rules DB/config file se; naya rule add = config update + deploy, no hardcode
-- **Pattern registry:** list of patterns + which agent handles; naya pattern = naya agent ya existing agent extend
-- **Feedback capture:** user “correct explanation” / “wrong classification” — store for R&D
-- **Audit + versioning:** rule change, model change — kya badla, kab, kyu (explain)
+### Implementation
+- **Config-driven rules:** Rule retrieval driven from the config database; avoid hardcoding rules into application logic.
+- **Pattern registry:** Registry noting which agents handle which patterns.
+- **Feedback capture:** Record user corrections for R&D tuning.
+- **Audit + versioning:** Who changed what, when, and why.
 
-### Explain
-- “Naya rule kyu add kiya?” — business reason + example cases
-- “Is pattern ko system ne kaise seekha/add kiya?” — documentation ya runbook
+### Explanation
+- “Why was this rule added?” Explained simply with business logic and example edge cases.
+- Using the runbook documentation to trace how a system learned a new pattern.
 
-**Done when:** Naye patterns aur rules add kar sakte ho without full rewrite; explanations improve over time with feedback.
-
-**Doc:** README — “evolving intelligence engine”; yeh phase ka detail future mein expand ho sakta hai
+**Done when:** New patterns and rules can be appended without application rewrites, and the feedback loop verifiably improves explanations.
 
 ---
 
-## Summary — Har Phase Mein Kya
+## Summary — What to Do in Each Phase
 
-| Phase | Padhna | Seekhna | Implement | Explain |
+| Phase | Research | Learn | Code | Synthesize |
 |-------|--------|---------|------------|---------|
-| **1** | Trend, seasonality, outlier, time series | Formula, kab fail, JumpIQ link | Notebooks (after understand) | Daily report + “dealership pe kaise” |
-| **2** | Data quality, imputation, validation, ETL | Kab impute/flag, never trust raw | Ingest + clean + validate | “Ye row clean/reject kyu” |
-| **3** | Models production-style, score definitions | Explain score, resolve conflicts | Models + derived scores + reasons | “Score 0.8 kyu”, “spike seasonal/outlier kyu” |
-| **4** | Rule engine, DB schema, UI APIs | Rule versioning, trace “why” | Rules + DB + UI feed | “Opportunity kyu”, “drop trace” |
-| **5** | Agent design, investigation flow, tools | Interpretable output, conflict resolve | Agents + Super Agent + investigation | “Anomaly kyu”, “cause kya” |
-| **6** | Evolving systems, feedback, versioning | New pattern/rule add safely | Config rules, pattern registry, feedback | “Naya rule/pattern kyu, kaise” |
+| **1** | Trend, seasonality, outlier, time series | Formulas, limitations, and direct application to JumpIQ. | Notebooks (after understand) | Reports linking algorithms to dealership logic |
+| **2** | Data quality, imputation, validation, ETL | Determine imputation/flag conditions. | ETL execution. | Line-by-line justification. |
+| **3** | Models production-style, score definitions | Handling calculation conflicts vs intuition. | Model extraction formulas | Justifying individual metrics. |
+| **4** | Rule engine, DB schema, UI APIs | Ensuring backward compatibility. | Architecting delivery systems. | Tracing UI state directly back to triggers. |
+| **5** | Advanced reasoning loop | Agent interaction safety | Agent system instantiation | Orchestrated anomaly justification |
+| **6** | Auto-tuning parameters | Configuration-driven deployments | Feedback routing | Reviewing feedback efficacy. |
 
 ---
 
 ## Order of Work (Start to End)
 
-1. **Phase 1** — Abhi yahi karo; complete karo with daily reports.  
-2. **Phase 2** — Jab Phase 1 clear ho, pipeline ka data part (raw + clean + validate).  
-3. **Phase 3** — Clean data pe models + scores; explainability har step pe.  
-4. **Phase 4** — Rules + DB + UI; full pipeline end-to-end (data → UI).  
-5. **Phase 5** — Agent layer; anomaly + investigation + explain.  
+1. **Phase 1** — Focus entirely here; generate accurate daily implementation reports.  
+2. **Phase 2** — Once Phase 1 mathematics are understood, build out the ETL scripts.  
+3. **Phase 3** — Run analysis models against cleaned data; maintain explainable architecture.  
+4. **Phase 4** — Feed analytical output into the DB and UI rule engines.  
+5. **Phase 5** — Deploy logic via Multi-Agent architectures.  
 6. **Phase 6** — Evolving: new patterns, new rules, feedback.
 
 ---
 
 ## Important Reminder
 
-- **Phase 1** ke bina Phase 2–6 solid nahi banenge — pehle **understand**, phir implement.  
-- Har phase mein **explain** zaroori hai — JumpIQ ko “why” batana hai.  
-- Documentation update karte raho: jo naya seekha/implement kiya, short note bana do (same docs ya new R&D notes).  
-- Yeh roadmap **living doc** hai — project ke saath refine ho sakta hai (dates, priorities).  
+- Phase 1 is the bedrock for the remainder of the architecture — understand the math before implementing it.  
+- Explanation is paramount at every stage. We must teach JumpIQ to answer “why”.  
+- Abstract learnings into standalone markdown (like /learning/).  
+- The roadmap is a living document and will evolve with the project.  
 
-Ab **Phase 1** pe focus karo; baaki phases ka detail jab us phase pe pahuncho tab aur bhar sakte ho.
+Hyper-focus on Phase 1 logic for now; future planning details can be formalized when their phases arrive.
