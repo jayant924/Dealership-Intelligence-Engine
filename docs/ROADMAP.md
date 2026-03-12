@@ -42,10 +42,12 @@ This document defines the complete journey: from Phase 1 straight through to the
 **Objective:** Do not jump straight to code. First, understand the flow: pattern -> algorithm -> result -> explanation.
 
 ### Research & Study (R&D)
-*See deep-dive documentation in the `/docs/learning/` folder.*
-- **Trend:** [Docs: Trend Documentation](learning/TREND_AND_SEASONALITY.md) (slope, moving average)
-- **Seasonality:** [Docs: Seasonality](learning/TREND_AND_SEASONALITY.md) (decomposition, Prophet)
-- **Outliers:** [Docs: Anomaly Detection](learning/ANOMALY_DETECTION.md) (Z-score, IQR)
+*See deep-dive documentation in the `/docs/` folder.*
+- **Trend:** [Algorithm Guide](algorithms/trend_detection.md) | [Learning Notes](learning/TREND_AND_SEASONALITY.md) (slope, moving average)
+- **Seasonality:** [Algorithm Guide](algorithms/seasonality_detection.md) | [Learning Notes](learning/TREND_AND_SEASONALITY.md) (decomposition, Prophet)
+- **Outliers:** [Learning Notes](learning/ANOMALY_DETECTION.md) (Z-score, IQR)
+- **Exploration Scripts:** [exploration/script/](../exploration/script/) (trend_detection.py, seasonality_detection.py)
+- **Working PoC Dashboard:** [exploration/web app/](../exploration/web%20app/) (FastAPI + Angular)
 
 ### Understanding & Learning
 - How the algorithm works internally (formulas, mathematical logic).

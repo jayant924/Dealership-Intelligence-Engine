@@ -1,6 +1,8 @@
 # Seasonality Detection Explained — Beginner's Guide
 
-Now that we understand **Trend Detection** (which tells us the general direction a dealership is heading), we need to tackle the next big challenge: **Seasonality**.
+**Source code:** [exploration/script/seasonality_detection.py](../../exploration/script/seasonality_detection.py) (standalone script) | [exploration/web app/backend/algorithms/seasonality.py](../../exploration/web%20app/backend/algorithms/seasonality.py) (API version)
+
+Now that we understand **Trend Detection** ([trend_detection.md](trend_detection.md)) — which tells us the general direction a dealership is heading — we need to tackle the next big challenge: **Seasonality**.
 
 Let's use the same data we started with, but add a real-world twist to it.
 

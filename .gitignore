@@ -73,6 +73,14 @@ venv.bak/
 *.swp
 *.swo
 
+# Claude Code
+.claude/
+
+# Node / Angular
+node_modules/
+.angular/
+.nx/
+
 # OS generated files
 .DS_Store
 .DS_Store?
@@ -83,7 +91,7 @@ ehthumbs.db
 Thumbs.db
 
 # Project specific data and models (Keep local data out of the repo)
-data/
+/data/
 datasets/
 *.csv
 *.tsv

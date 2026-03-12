@@ -1,6 +1,8 @@
 # Trend Detection Explained — Beginner's Guide
 
-I've read through `trend_detection_numpy_pandas.py`. Let me walk you through it from scratch — **what, why, and how** for every concept.
+Walk-through of the trend detection algorithm — **what, why, and how** for every concept.
+
+**Source code:** [exploration/script/trend_detection.py](../../exploration/script/trend_detection.py) (standalone script) | [exploration/web app/backend/algorithms/trend.py](../../exploration/web%20app/backend/algorithms/trend.py) (API version)
 
 ---
 
