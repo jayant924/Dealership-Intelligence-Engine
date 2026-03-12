@@ -7,7 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   imports: [DashboardComponent],
   template: `<app-dashboard></app-dashboard>`,
   styles: [`
-    :host { display: block; background: #f4f5f7; min-height: 100vh; }
+    :host { display: block; background: transparent; min-height: 100vh; }
   `]
 })
 export class App {}

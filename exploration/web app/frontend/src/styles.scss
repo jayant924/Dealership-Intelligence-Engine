@@ -1,2 +1,62 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #f4f5f7; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0b1020;
+  --surface: #121a33;
+  --surface-2: #0f1730;
+  --text: #e9eefc;
+  --text-muted: #a6b0cf;
+  --border: rgba(255, 255, 255, 0.10);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  --accent: #7c6cff;
+  --accent-2: #38bdf8;
+
+  /* Classification colors (consistent across UI) */
+  --status-champion: #22c55e;
+  --status-straggler: #ef4444;
+  --status-at-risk: #f59e0b;
+  --status-recovering: #38bdf8;
+
+  --danger-bg: rgba(239, 68, 68, 0.12);
+  --danger-border: rgba(239, 68, 68, 0.55);
+  --danger-text: #fecaca;
+
+  --focus: rgba(124, 108, 255, 0.45);
+}
+
+html, body {
+  min-height: 100%;
+  background: radial-gradient(1200px 900px at 20% -10%, rgba(124, 108, 255, 0.18), transparent 55%),
+    radial-gradient(900px 700px at 90% 10%, rgba(56, 189, 248, 0.10), transparent 60%),
+    var(--bg);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+}
+
+body { line-height: 1.4; }
+
+app-root { display: block; min-height: 100vh; }
+
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button, input, select, textarea {
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  box-shadow: 0 0 0 3px var(--focus);
+  border-color: rgba(124, 108, 255, 0.7);
+}
+
+::selection { background: rgba(124, 108, 255, 0.35); }

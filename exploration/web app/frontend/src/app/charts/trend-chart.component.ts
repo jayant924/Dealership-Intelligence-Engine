@@ -31,19 +31,28 @@ export class TrendChartComponent implements OnChanges {
 
   private buildChart() {
     const months = this.dealerships[0].months.map(m => `M${m}`);
-    const colors = ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2'];
+    const fallbackColors = ['#7c6cff', '#38bdf8', '#fb7185', '#34d399', '#f59e0b', '#a78bfa'];
+    let fallbackIdx = 0;
 
     const series: any[] = [];
 
     this.dealerships.forEach((d, i) => {
+      const label = (d.classification?.label ?? '').toUpperCase();
+      const baseColor =
+        label === 'CHAMPION'
+          ? '#22c55e'
+          : label === 'STRAGGLER'
+            ? '#ef4444'
+            : fallbackColors[(fallbackIdx++) % fallbackColors.length];
+
       // Revenue line
       series.push({
         name: `${d.name} revenue`,
         type: 'line',
         data: d.revenue,
         smooth: true,
-        lineStyle: { color: colors[i], width: 2 },
-        itemStyle: { color: colors[i] },
+        lineStyle: { color: baseColor, width: 2 },
+        itemStyle: { color: baseColor },
         symbol: 'circle',
         symbolSize: 4,
       });
@@ -53,10 +62,11 @@ export class TrendChartComponent implements OnChanges {
         name: `${d.name} trend`,
         type: 'line',
         data: d.trend_line,
-        lineStyle: { color: colors[i], type: 'dashed', width: 1, opacity: 0.6 },
-        itemStyle: { color: colors[i] },
+        lineStyle: { color: baseColor, type: 'dashed', width: 2.5, opacity: 0.95 },
+        itemStyle: { color: baseColor },
         symbol: 'none',
         legendHoverLink: false,
+        z: 3,
       });
 
       // Moving average
@@ -64,23 +74,56 @@ export class TrendChartComponent implements OnChanges {
         name: `${d.name} MA3`,
         type: 'line',
         data: d.moving_average,
-        lineStyle: { color: colors[i], type: 'dotted', width: 1.5 },
-        itemStyle: { color: colors[i] },
+        lineStyle: {
+          color: baseColor,
+          type: 'dotted',
+          width: 3,
+          opacity: 0.95,
+        },
+        itemStyle: { color: baseColor },
         symbol: 'none',
         legendHoverLink: false,
+        z: 4,
       });
     });
 
     this.chartOptions = {
-      title: { text: 'Revenue Trends (24 months)', left: 'center', textStyle: { fontSize: 14 } },
-      tooltip: { trigger: 'axis' },
+      backgroundColor: 'transparent',
+      title: {
+        text: `Revenue Trends (${months.length} months)`,
+        left: 'center',
+        textStyle: { fontSize: 14, color: '#e9eefc' },
+      },
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: '#0f1730',
+        borderColor: 'rgba(255,255,255,0.12)',
+        textStyle: { color: '#e9eefc' },
+      },
       legend: {
         data: this.dealerships.map(d => `${d.name} revenue`),
         bottom: 0,
+        textStyle: { color: '#a6b0cf' },
       },
       grid: { left: '5%', right: '3%', bottom: '15%', containLabel: true },
-      xAxis: { type: 'category', data: months, boundaryGap: false },
-      yAxis: { type: 'value', name: 'Revenue ($k)', nameLocation: 'middle', nameGap: 50 },
+      xAxis: {
+        type: 'category',
+        data: months,
+        boundaryGap: false,
+        axisLine: { lineStyle: { color: 'rgba(255,255,255,0.16)' } },
+        axisLabel: { color: '#a6b0cf' },
+        splitLine: { lineStyle: { color: 'rgba(255,255,255,0.06)' } },
+      },
+      yAxis: {
+        type: 'value',
+        name: 'Revenue ($k)',
+        nameLocation: 'middle',
+        nameGap: 50,
+        nameTextStyle: { color: '#a6b0cf' },
+        axisLine: { lineStyle: { color: 'rgba(255,255,255,0.16)' } },
+        axisLabel: { color: '#a6b0cf' },
+        splitLine: { lineStyle: { color: 'rgba(255,255,255,0.06)' } },
+      },
       series,
     };
   }

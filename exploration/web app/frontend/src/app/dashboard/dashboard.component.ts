@@ -23,10 +23,10 @@ export class DashboardComponent implements OnInit {
   error = '';
 
   readonly classColors: Record<string, string> = {
-    CHAMPION: '#27ae60',
-    STRAGGLER: '#e74c3c',
-    'AT RISK': '#f39c12',
-    RECOVERING: '#2980b9',
+    CHAMPION: 'var(--status-champion)',
+    STRAGGLER: 'var(--status-straggler)',
+    'AT RISK': 'var(--status-at-risk)',
+    RECOVERING: 'var(--status-recovering)',
   };
 
   constructor(private svc: IntelligenceService) {}
